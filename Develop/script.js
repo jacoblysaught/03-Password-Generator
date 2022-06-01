@@ -1,7 +1,7 @@
 // Assignment code here
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
 
 //variables for the input form
 const characterAmountRange = document.getElementById('characterAmountRange');
@@ -16,7 +16,7 @@ const includeSymbolsEl = document.getElementById('includeSymbols');
 
 const form = document.getElementById('passwordGenerator');
 
-const passwordDisplay = document.getElementById('password-display');
+const passwordDisplay = document.querySelector('placeholder');
 
 //this variable cycles through the uppercase letters in the char code(65-90) if checked on input
 const uppercaseCharCode = arrayLowToHigh(65, 90);
@@ -40,8 +40,6 @@ const symbolsCharCode = arrayLowToHigh (33, 47).concat(
 characterAmountNumber.addEventListener('input', syncCharacterAmount);
 characterAmountRange.addEventListener('input', syncCharacterAmount);
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 // prevents page from refreshing  
 form.addEventListener('submit', event => {
@@ -86,7 +84,6 @@ function syncCharacterAmount(e) {
   characterAmountRange.value = value
 }
 
-
 // Write password to the #password input
 function writePassword(num) {
   var password = generatePassword();
@@ -97,5 +94,7 @@ function writePassword(num) {
     password += generatePassword();
   }
   return password;
-
 }
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", generatePassword);
