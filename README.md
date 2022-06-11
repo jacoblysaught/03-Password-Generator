@@ -12,5 +12,6 @@ SO THAT I can create a strong password that provides greater security
 
 ## Recording of Site
 
-https://user-images.githubusercontent.com/101414962/173199816-7a6ca359-892e-47b1-81cb-0cbd7921ae24.mp4
+![passwordGenerator](https://user-images.githubusercontent.com/101414962/173199898-e1d1a2da-c485-4a77-8b5a-612e3977d52b.gif)
+
 
