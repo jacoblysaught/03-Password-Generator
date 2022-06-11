@@ -1,5 +1,4 @@
 // Assignment code here
-
 // Get references to the #generate element
 const generateBtn = document.querySelector("#generate");
 
@@ -16,7 +15,7 @@ const includeSymbolsEl = document.getElementById('includeSymbols');
 
 const form = document.getElementById('passwordGenerator');
 
-const passwordDisplay = document.querySelector('placeholder');
+const passwordDisplay = document.getElementById('password');
 
 //this variable cycles through the uppercase letters in the char code(65-90) if checked on input
 const uppercaseCharCode = arrayLowToHigh(65, 90);
@@ -41,16 +40,7 @@ characterAmountNumber.addEventListener('input', syncCharacterAmount);
 characterAmountRange.addEventListener('input', syncCharacterAmount);
 
 
-// prevents page from refreshing  
-form.addEventListener('submit', event => {
-  event.preventDefault()
-  const characterAmount = characterAmountNumber.value
-  const includeUppercase = includeUppercaseEl.checked
-  const includeNumbers = includeNumbersEl.checked
-  const includeSymbols = includeSymbolsEl.checked
-  const password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols);
-  passwordDisplay.innerText = password
-})
+
 
 // returns random characters including alphanumeric and special characters 
 function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
@@ -60,13 +50,30 @@ function generatePassword(characterAmount, includeUppercase, includeNumbers, inc
   if (includeNumbers) charCodes = charCodes.concat(numbersCharCode)
 
   const passwordCharacters = []
-  for (let i = 0; i < characterAmount, i++;) {
+  for (let i = 0; i < characterAmount; i++) {
     const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
     passwordCharacters.push(String.fromCharCode(characterCode))
+    console.log('hello')
   }
+  
   return passwordCharacters.join('')
  
 }
+
+// prevents page from refreshing  
+form.addEventListener('submit', event => {
+  event.preventDefault()
+  const characterAmount = characterAmountNumber.value
+  const includeUppercase = includeUppercaseEl.checked
+  const includeNumbers = includeNumbersEl.checked
+  const includeSymbols = includeSymbolsEl.checked
+  const password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols);
+  //console.log(password)
+  passwordDisplay.innerHTML = password
+
+  
+})
+
 
 // cycles through the char code array's given parameters
 function arrayLowToHigh(low, high) {
@@ -98,3 +105,7 @@ function writePassword(num) {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", generatePassword);
+
+console.log(uppercaseCharCode)
+console.log(numbersCharCode)
+console.log(symbolsCharCode)
